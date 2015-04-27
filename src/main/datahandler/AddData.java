@@ -1,6 +1,5 @@
 package main.datahandler;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.jfree.data.xy.XYSeriesCollection;
@@ -21,25 +20,25 @@ public class AddData {
 			ClassNotFoundException {
 		System.out.println(inputLine);
 		String[] values = inputLine.split(";");
-		System.out.println(inputLine);
-		java.sql.Statement myCon = DatabaseConnector.getConnection();
-		ResultSet rs = myCon.executeQuery("SELECT now();");
-		String time2 = "";
+
+//		java.sql.Statement myCon = DatabaseConnector.getConnection();
+//		ResultSet rs = myCon.executeQuery("SELECT now();");
+//		String time2 = "";
 
 		long time = System.currentTimeMillis();
-		while (rs.next())
-			time2 = rs.getString(1);
+//		while (rs.next())
+//			time2 = rs.getString(1);
 		for (int i = 0; i < values.length; i++)
 			addValues(values[i], time, i);
 
-		myCon.executeUpdate("INSERT INTO `exjobb`.`times` (`time`) VALUES ('"
-				+ time2 + "');");
-		for (int i = 0; i < values.length; i++) {
-			myCon.executeUpdate("INSERT INTO `exjobb`.`" + LineChart.NAMES[i]
-					+ "` VALUES (LAST_INSERT_ID()," + values[i] + ");");
-		}
+//		myCon.executeUpdate("INSERT INTO `exjobb`.`times` (`time`) VALUES ('"
+//				+ time2 + "');");
+//		for (int i = 0; i < values.length; i++) {
+//			myCon.executeUpdate("INSERT INTO `exjobb`.`" + LineChart.NAMES[i]
+//					+ "` VALUES (LAST_INSERT_ID()," + values[i] + ");");
+//		}
 
-		myCon.close();
+//		myCon.close();
 		IO.input(values);
 		dataset2.getSeries("Detected Presence").add(time, IO.getOutput());
 
