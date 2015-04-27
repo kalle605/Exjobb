@@ -15,7 +15,7 @@ import org.jfree.ui.ApplicationFrame;
 public class LineChart extends ApplicationFrame {
 	private static final long serialVersionUID = -8186205081849264360L;
 	public static final String[] NAMES = { "sound", "movement", "people",
-			"light", "piezo", "Detected Presence" };
+			"light", "piezo","carbon dioxide", "Detected Presence" };
 
 	public LineChart(String applicationTitle, String chartTitle,
 			XYSeriesCollection dataset, XYSeriesCollection dataset2) {
