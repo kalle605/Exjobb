@@ -80,6 +80,7 @@ public class TestFrame extends JFrame {
 	public void updateValues(String[] values) {
 		for (int i = 0; i < values.length; i++)
 			labels.get(i).setText(values[i]);
+		System.out.println("----" + values);
 		repaint();
 	}
 }

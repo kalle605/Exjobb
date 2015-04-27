@@ -3,7 +3,6 @@ package main;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map.Entry;
 
 import main.datahandler.LineChart;
 import main.filter.Filter;

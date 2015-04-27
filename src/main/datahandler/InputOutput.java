@@ -27,6 +27,7 @@ public class InputOutput {
 	}
 
 	public void input(String[] v) {
+		cdl.measure(v);
 		for (int i = 0; i < v.length; i++)
 			if (integrator.containsKey(LineChart.NAMES[i]))
 				integrator.get(LineChart.NAMES[i]).input(
