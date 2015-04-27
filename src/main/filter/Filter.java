@@ -1,12 +1,28 @@
 package main.filter;
 
-public abstract class Filter {
+import main.integration.Integrator;
 
-	public abstract void input(double d);
+public class Filter {
+	private double th = 1;
+	private Integrator integrator;
 
-	public abstract double output();
+	public Filter(Integrator integrator) {
+		this.integrator = integrator;
+	}
 
-	protected int getMax(double d, int max) {
+	public void input(double d) {
+		integrator.input(getMax(d, th));
+	}
+
+	public double output() {
+		return integrator.output();
+	}
+
+	protected int getMax(double d, double max) {
 		return d >= max ? 1 : 0;
+	}
+
+	public void setTreshHold(double th) {
+		this.th = th;
 	}
 }

@@ -41,7 +41,6 @@ public class AddData {
 //		myCon.close();
 		IO.input(values);
 		dataset2.getSeries("Detected Presence").add(time, IO.getOutput());
-
 	}
 
 	private void addValues(String value, long time, int i) {
