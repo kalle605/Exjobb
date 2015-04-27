@@ -19,9 +19,9 @@ public class AddData {
 
 	public void addData(String inputLine) throws SQLException,
 			ClassNotFoundException {
-
+		System.out.println(inputLine);
 		String[] values = inputLine.split(";");
-
+		System.out.println(inputLine);
 		java.sql.Statement myCon = DatabaseConnector.getConnection();
 		ResultSet rs = myCon.executeQuery("SELECT now();");
 		String time2 = "";
