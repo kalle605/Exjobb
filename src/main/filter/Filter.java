@@ -11,6 +11,7 @@ public class Filter {
 	}
 
 	public void input(double d) {
+		System.out.println(th);
 		integrator.input(getMax(d, th));
 	}
 
@@ -19,7 +20,7 @@ public class Filter {
 	}
 
 	protected int getMax(double d, double max) {
-		return d >= max ? 1 : 0;
+		return d > max ? 1 : 0;
 	}
 
 	public void setTreshHold(double th) {

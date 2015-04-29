@@ -6,7 +6,7 @@ public class I_PIR extends Integrator {
 
 		System.out.println(data.getValue() == 1 ? Math.pow(0.5,
 				getOutputInterval()) * data.getValue() / (x() + 1) : data
-				.getValue() + "pir");
+				.getValue() + " pir");
 		return data.getValue() == 1 ? Math.pow(0.5, getOutputInterval())
 				* data.getValue() / (x() + 1) : data.getValue();
 	}

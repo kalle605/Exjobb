@@ -19,7 +19,7 @@ import org.jfree.ui.RefineryUtilities;
 public class SerielCom implements SerialPortEventListener {
 	private SerialPort serialPort;
 	private XYSeriesCollection dataset;
-
+	private XYSeriesCollection dataset2;
 	private AddData data;
 	static double arr[];
 
@@ -29,7 +29,6 @@ public class SerielCom implements SerialPortEventListener {
 	 */
 	private BufferedReader input;
 
-	private XYSeriesCollection dataset2;
 	/** Milliseconds to block while waiting for port open */
 	private static final int TIME_OUT = 2000;
 	/** Default bits per second for COM port. */

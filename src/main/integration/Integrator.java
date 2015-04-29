@@ -1,9 +1,9 @@
 package main.integration;
 
 public abstract class Integrator {
-	protected static final int INPUT_INTERVAL = 240000;
+	protected static final int INPUT_INTERVAL = 60000;
 	protected static long LAST_CHANGE = 0;
-	protected static final int OUTPUT_INTERVAL = 120000;
+	protected static final int OUTPUT_INTERVAL = 30000;
 	protected BinaryDataholder data = new BinaryDataholder();
 
 	public void input(double value) {
@@ -16,8 +16,7 @@ public abstract class Integrator {
 	public abstract double output();
 
 	protected int x() {
-		int x = (int) (data.getTimeDifference() / INPUT_INTERVAL);
-		return x;
+		return (int) (data.getTimeDifference() / INPUT_INTERVAL);
 	}
 
 	protected long getOutputInterval() {

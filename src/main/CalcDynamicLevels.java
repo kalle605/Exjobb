@@ -3,6 +3,7 @@ package main;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import main.datahandler.LineChart;
 import main.filter.Filter;
@@ -17,6 +18,8 @@ public class CalcDynamicLevels {
 		this.integrator = integrator;
 		time = System.currentTimeMillis();
 		values = new ArrayList<Double>();
+		for (int i = 0; i < LineChart.NAMES.length - 1; i++)
+			values.add(0.0);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -29,17 +32,22 @@ public class CalcDynamicLevels {
 		});
 	}
 
-	public void measure(String arr[]) {
-		if (Double.parseDouble(arr[1]) == 0 && Double.parseDouble(arr[3]) > 20) {
-			if ((System.currentTimeMillis() - time) / 60000 >= 5) {
-				for (int i = 0; i < arr.length; i++) {
-					Double temp = Double.parseDouble(arr[i]);
-					if (values.get(i) < temp)
+	public void measure(List<String> v) {
+		System.out.println(v);
+		int pirValue = 1;
+		int lightValue = 2;
+		if (Double.parseDouble(v.get(pirValue)) == 0
+				&& Double.parseDouble(v.get(lightValue)) < 50) {
+			if (((System.currentTimeMillis() - time) / 10000) >= 1) {
+				for (int i = 0; i < v.size(); i++) {
+					Double temp = Double.parseDouble(v.get(i));
+					if (values.get(i) < temp && i != 1 && i != 2) {
 						values.set(i, temp);
-					integrator.get(LineChart.NAMES[i]).setTreshHold(temp);
-				}
-				frame.updateValues(arr);
 
+						integrator.get(LineChart.NAMES[i]).setTreshHold(temp);
+					}
+				}
+				frame.updateValues(values);
 			}
 		} else
 			for (int i = 0; i < values.size(); i++) {

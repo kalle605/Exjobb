@@ -3,9 +3,9 @@ package main.integration;
 public class I_Sound extends Integrator {
 	@Override
 	public double output() {
-		System.out.println(data.getValue() == 1 ? Math.pow(0.5,
+		System.out.println((data.getValue() == 1 ? Math.pow(0.5,
 				getOutputInterval()) * data.getValue() / (x() + 1) : data
-				.getValue() + "sound");
+				.getValue()) + " sound");
 		return data.getValue() == 1 ? Math.pow(0.5, getOutputInterval())
 				* data.getValue() / (x() + 1) : data.getValue();
 	}

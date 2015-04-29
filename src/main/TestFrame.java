@@ -13,6 +13,7 @@ public class TestFrame extends JFrame {
 	private static final long serialVersionUID = -802009526020433864L;
 	private JPanel contentPane;
 	private ArrayList<JLabel> labels;
+	private JLabel piezo2;
 
 	/**
 	 * Create the frame.
@@ -49,6 +50,9 @@ public class TestFrame extends JFrame {
 		JLabel _sound = new JLabel("Sound");
 		_sound.setBounds(46, 111, 100, 14);
 		panel.add(_sound);
+		JLabel _piezo2 = new JLabel("Piezo 2");
+		_piezo2.setBounds(46, 136, 100, 14);
+		panel.add(_piezo2);
 
 		JLabel light = new JLabel("New label");
 		light.setBounds(117, 11, 100, 14);
@@ -69,18 +73,24 @@ public class TestFrame extends JFrame {
 		JLabel sound = new JLabel("New label");
 		sound.setBounds(117, 111, 100, 14);
 		panel.add(sound);
+		piezo2 = new JLabel("New label");
+		piezo2.setBounds(117, 136, 100, 14);
+		panel.add(piezo2);
 
-		labels.add(light);
-		labels.add(co2);
-		labels.add(pir);
-		labels.add(piezo);
 		labels.add(sound);
+		labels.add(pir);
+		labels.add(light);
+		labels.add(piezo);
+		labels.add(co2);
+		labels.add(piezo2);
+
 	}
 
-	public synchronized void updateValues(String[] values) {
-		for (int i = 0; i < values.length; i++)
-			labels.get(i).setText(values[i]);
-		System.out.println("----" + values);
+	public synchronized void updateValues(ArrayList<Double> values) {
+		System.out.println(values);
+		for (int i = 0; i < values.size(); i++)
+			labels.get(i).setText(values.get(i) + "");
+
 		repaint();
 	}
 }

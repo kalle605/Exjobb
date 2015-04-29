@@ -1,6 +1,7 @@
 package main.datahandler;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 import main.CalcDynamicLevels;
@@ -22,16 +23,17 @@ public class InputOutput {
 		integrator.put("piezo", new Filter(new I_Piezo()));
 		integrator.put("light", new Filter(new I_Light()));
 		integrator.put("carbon dioxide", new Filter(new I_CO2()));
+		integrator.put("piezo golv", new Filter(new I_Piezo()));
 		cdl = new CalcDynamicLevels(integrator);
-
 	}
 
-	public void input(String[] v) {
+	public void input(List<String> v) {
+		System.out.println(v + "HÄR");
 		cdl.measure(v);
-		for (int i = 0; i < v.length; i++)
+		for (int i = 0; i < v.size(); i++)
 			if (integrator.containsKey(LineChart.NAMES[i]))
 				integrator.get(LineChart.NAMES[i]).input(
-						Double.parseDouble(v[i]));
+						Double.parseDouble(v.get(i)));
 
 	}
 
