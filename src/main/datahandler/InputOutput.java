@@ -21,7 +21,7 @@ public class InputOutput {
 		integrator.put("movement", new Filter(new I_PIR()));
 		integrator.put("sound", new Filter(new I_Sound()));
 		integrator.put("piezo", new Filter(new I_Piezo()));
-		integrator.put("light", new Filter(new I_Light()));
+		integrator.put("light", new Filter(new I_Light(), 200));
 		integrator.put("carbon dioxide", new Filter(new I_CO2()));
 		integrator.put("piezo golv", new Filter(new I_Piezo()));
 		cdl = new CalcDynamicLevels(integrator);

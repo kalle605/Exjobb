@@ -3,6 +3,11 @@ package main.filter;
 import main.integration.Integrator;
 
 public class Filter {
+	public Filter(Integrator integrator, double th) {
+		this.integrator = integrator;
+		this.th = th;
+	}
+
 	private double th = 1;
 	private Integrator integrator;
 
