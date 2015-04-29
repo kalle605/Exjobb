@@ -77,7 +77,7 @@ public class TestFrame extends JFrame {
 		labels.add(sound);
 	}
 
-	public void updateValues(String[] values) {
+	public synchronized void updateValues(String[] values) {
 		for (int i = 0; i < values.length; i++)
 			labels.get(i).setText(values[i]);
 		System.out.println("----" + values);
