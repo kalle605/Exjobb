@@ -58,7 +58,7 @@ public class TestAll {
 				Thread.currentThread().interrupt();
 			}
 			String s = (r.nextInt(200) + 100) + ";" + (r.nextInt(1)) + ";"
-					+ 500 + ";" + (r.nextInt(200) + 100) + ";"
+					+ 100 + ";" + (r.nextInt(200) + 100) + ";"
 					+ (r.nextInt(200) + 100) + ";" + (r.nextInt(200) + 100)
 					+ ";";
 			try {
