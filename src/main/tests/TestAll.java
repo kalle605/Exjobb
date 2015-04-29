@@ -40,10 +40,9 @@ public class TestAll {
 			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
-			String s = (r.nextInt() % 200 + 200) + ";" + 0 + ";" + 0 + ";"
-					+ (r.nextInt() % 200 + 200) + ";"
-					+ (r.nextInt() % 200 + 200) + ";"
-					+ (r.nextInt() % 200 + 200) + ";";
+			String s = (r.nextInt(200) + 50) + ";" + 0 + ";" + 0 + ";"
+					+ (r.nextInt(200) + 50) + ";" + (r.nextInt(200) + 50) + ";"
+					+ (r.nextInt(200) + 50) + ";";
 			try {
 				data.addData(s);
 			} catch (ClassNotFoundException | SQLException e) {
@@ -58,9 +57,9 @@ public class TestAll {
 			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
-			String s = (r.nextInt(300) + 250) + ";" + 500 + ";"
-					+ (r.nextInt(1)) + ";" + (r.nextInt(300) + 250) + ";"
-					+ (r.nextInt(300) + 250) + ";" + (r.nextInt(300) + 250)
+			String s = (r.nextInt(200) + 100) + ";" + (r.nextInt(1)) + ";"
+					+ 500 + ";" + (r.nextInt(200) + 100) + ";"
+					+ (r.nextInt(200) + 100) + ";" + (r.nextInt(200) + 100)
 					+ ";";
 			try {
 				data.addData(s);
