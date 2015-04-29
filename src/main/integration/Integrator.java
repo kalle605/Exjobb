@@ -1,9 +1,9 @@
 package main.integration;
 
 public abstract class Integrator {
-	protected static final int INPUT_INTERVAL = 60000;
+	protected static final int INPUT_INTERVAL = 240000;
 	protected static long LAST_CHANGE = 0;
-	protected static final int OUTPUT_INTERVAL = 30000;
+	protected static final int OUTPUT_INTERVAL = 120000;
 	protected BinaryDataholder data = new BinaryDataholder();
 
 	public void input(double value) {
