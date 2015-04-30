@@ -16,8 +16,7 @@ public class LineChart extends ApplicationFrame {
 	private static final long serialVersionUID = -8186205081849264360L;
 	public static final String[] NAMES = { "sound", "movement",
 			// "people",
-			"light", "piezo", "carbon dioxide", "piezo golv",
-			"Detected Presence" };
+			"light", "piezo", "carbon dioxide", "Detected Presence" };
 
 	public LineChart(String applicationTitle, String chartTitle,
 			XYSeriesCollection dataset, XYSeriesCollection dataset2) {
