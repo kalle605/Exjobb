@@ -8,8 +8,8 @@ public class Filter {
 		this.th = th;
 	}
 
-	private double th = 1;
-	private Integrator integrator;
+	protected double th = 1;
+	protected Integrator integrator;
 
 	public Filter(Integrator integrator) {
 		this.integrator = integrator;
