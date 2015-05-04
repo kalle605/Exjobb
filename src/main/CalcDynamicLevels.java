@@ -33,7 +33,6 @@ public class CalcDynamicLevels {
 	}
 
 	public void measure(List<String> v) {
-		System.out.println(v);
 		int pirValue = 1;
 		int lightValue = 2;
 		if (Double.parseDouble(v.get(pirValue)) == 0

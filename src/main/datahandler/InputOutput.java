@@ -28,7 +28,6 @@ public class InputOutput {
 	}
 
 	public void input(List<String> v) {
-		System.out.println(v + "HÄR");
 		cdl.measure(v);
 		for (int i = 0; i < v.size(); i++)
 			if (integrator.containsKey(LineChart.NAMES[i]))
