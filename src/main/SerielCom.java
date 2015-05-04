@@ -37,7 +37,7 @@ public class SerielCom implements SerialPortEventListener {
 	public void initialize() {
 		CommPortIdentifier portId = null;
 		try {
-			portId = CommPortIdentifier.getPortIdentifier("COM3");
+			portId = CommPortIdentifier.getPortIdentifier("COM4");
 		} catch (NoSuchPortException e1) {
 			e1.printStackTrace();
 		}
