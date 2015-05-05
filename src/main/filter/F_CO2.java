@@ -25,6 +25,9 @@ public class F_CO2 extends Filter {
 	}
 
 	public double output() {
+
+		if (values.size() < 4)
+			return integrator.output();
 		for (int i = 0; i < values.size() - 1; i++)
 			if ((int) (values.get(i) / 10) > (int) (values.get(i + 1) / 10))
 				return integrator.output();

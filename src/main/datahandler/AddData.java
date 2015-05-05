@@ -28,7 +28,7 @@ public class AddData {
 		long time = System.currentTimeMillis();
 		// while (rs.next())
 		// time2 = rs.getString(1);
-		for (int i = 0; i < values.length - 1; i++)
+		for (int i = 0; i < LineChart.NAMES.length - 1; i++)
 			addValues(values[i], time, i);
 
 		// myCon.executeUpdate("INSERT INTO `exjobb`.`times` (`time`) VALUES ('"

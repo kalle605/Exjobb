@@ -30,7 +30,7 @@ public class InputOutput {
 
 	public void input(List<String> v) {
 		cdl.measure(v);
-		for (int i = 0; i < v.size(); i++)
+		for (int i = 0; i < LineChart.NAMES.length; i++)
 			if (integrator.containsKey(LineChart.NAMES[i]))
 				integrator.get(LineChart.NAMES[i]).input(
 						Double.parseDouble(v.get(i)));
