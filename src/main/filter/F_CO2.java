@@ -1,37 +1,27 @@
 package main.filter;
 
-import java.util.LinkedList;
-
 import main.integration.Integrator;
 
 public class F_CO2 extends Filter {
-	LinkedList<Double> values;
-
 	public F_CO2(Integrator integrator) {
 		super(integrator);
-		values = new LinkedList<Double>();
 	}
 
-	public F_CO2(Integrator integrator, double th) {
-		super(integrator, th);
-		values = new LinkedList<Double>();
-	}
+	private double lastValue;
 
 	public void input(double d) {
-		values.addLast(d);
-		if (values.size() > 4)
-			values.removeFirst();
+		if (lastValue - d < -10) {
+			lastValue = d;
+			integrator.input(1);
+		} else if (d - lastValue < -10) {
+			lastValue = d;
+			integrator.input(0);
+		}
 		integrator.input(getMax(d, th));
 	}
 
-	public double output() {
-
-		if (values.size() < 4)
-			return integrator.output();
-		for (int i = 0; i < values.size() - 1; i++)
-			if ((int) (values.get(i) / 10) > (int) (values.get(i + 1) / 10))
-				return integrator.output();
-		return -1 * integrator.output();
+	protected int getMax(double d, double max) {
+		return d >= max ? 1 : -1;
 	}
 
 }

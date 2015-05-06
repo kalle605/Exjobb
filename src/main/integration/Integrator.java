@@ -1,12 +1,12 @@
 package main.integration;
 
 public abstract class Integrator {
-	protected static final int INPUT_INTERVAL = 120000;
+	protected final int INPUT_INTERVAL = 120000;
 	protected static long LAST_CHANGE = 0;
-	protected static final int OUTPUT_INTERVAL = 60000;
+	protected final int OUTPUT_INTERVAL = 60000;
 	protected BinaryDataholder data = new BinaryDataholder();
 
-	public void input(double value) {
+	public void input(int value) {
 		if (value == 1) {
 			this.data.setValue(1);
 			LAST_CHANGE = data.setTime(System.currentTimeMillis());

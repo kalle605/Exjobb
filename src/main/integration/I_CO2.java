@@ -10,9 +10,10 @@ public class I_CO2 extends Integrator {
 				* data.getValue() / (x() + 1)) : data.getValue();
 	}
 
-	public void input(double value) {
+	@Override
+	public void input(int value) {
 		if (value != data.getValue())
 			LAST_CHANGE = data.setTime(System.currentTimeMillis());
-		this.data.setValue(value == 1 ? 1 : -1);
+		this.data.setValue(value);
 	}
 }
