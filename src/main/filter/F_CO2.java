@@ -7,7 +7,7 @@ public class F_CO2 extends Filter {
 		super(integrator);
 	}
 
-	private double lastValue;
+	private double lastValue = 0;
 
 	public void input(double d) {
 		if (lastValue - d < -10) {
