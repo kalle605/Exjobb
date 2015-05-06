@@ -1,7 +1,9 @@
 package main;
 
 import java.awt.EventQueue;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,9 +37,13 @@ public class CalcDynamicLevels {
 	public void measure(List<String> v) {
 		int pirValue = 1;
 		int lightValue = 2;
+		SimpleDateFormat d = new SimpleDateFormat("HH");
+		String date = d.format(new Date());
+
 		if (Double.parseDouble(v.get(pirValue)) == 0
 				&& Double.parseDouble(v.get(lightValue)) < 50) {
-			if (((System.currentTimeMillis() - time) / 3600000) >= 1) {
+			if (((System.currentTimeMillis() - time) / 3600000) >= 1
+					&& (Integer.parseInt(date) > 20 || Integer.parseInt(date) < 5)) {
 				for (int i = 0; i < v.size(); i++) {
 					Double temp = Double.parseDouble(v.get(i));
 					if (values.get(i) < temp && i != 1 && i != 2) {

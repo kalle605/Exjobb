@@ -1,5 +1,7 @@
 package main.tests;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import org.junit.Assert;
@@ -75,6 +77,11 @@ public class TestFilters {
 		long time = System.nanoTime();
 		InsertSort();
 		System.out.println("InsertSort " + (System.nanoTime() - time) + "\n");
+
+		SimpleDateFormat d = new SimpleDateFormat("HH");
+		String date = d.format(new Date());
+
+		System.out.println(date + " timmar");
 	}
 
 	void swap(int i, int j) {
