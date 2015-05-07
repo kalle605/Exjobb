@@ -86,7 +86,7 @@ public class CalcDynamicLevels {
 				if (hasChanged) {
 					try {
 						DatabaseConnector.getConnection().execute(
-								"UPDATE indelvalue SET co2=" + values.get(3)
+								"UPDATE idlevalue SET co2=" + values.get(3)
 										+ ", sound = " + values.get(1)
 										+ "WHERE ID = 1");
 					} catch (ClassNotFoundException | SQLException e) {
