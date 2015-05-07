@@ -1,12 +1,16 @@
 package main;
 
 import java.awt.EventQueue;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import main.datahandler.DatabaseConnector;
 import main.datahandler.LineChart;
 import main.filter.Filter;
 
@@ -20,12 +24,34 @@ public class CalcDynamicLevels {
 		this.integrator = integrator;
 		time = System.currentTimeMillis();
 		values = new ArrayList<Double>();
-		for (int i = 0; i < LineChart.NAMES.length - 1; i++)
-			values.add(0.0);
+		double co2th = 0.0;
+		double soundth = 0.0;
+		double movementth = 1;
+		double lightth = 0.0;
+		try {
+			Statement dc = DatabaseConnector.getConnection();
+			ResultSet rs = dc.executeQuery("SELECT * FROM idlevalue");
+			while (rs.next()) {
+				co2th = rs.getDouble("co2");
+				soundth = rs.getDouble("sound");
+				lightth = rs.getDouble("light");
+			}
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		values.set(0, soundth);
+		values.set(1, movementth);
+		values.set(2, lightth);
+		values.set(3, co2th);
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new TestFrame();
+					frame = new TestFrame(values);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,19 +72,16 @@ public class CalcDynamicLevels {
 					&& (Integer.parseInt(date) > 20 || Integer.parseInt(date) < 5)) {
 				for (int i = 0; i < v.size(); i++) {
 					Double temp = Double.parseDouble(v.get(i));
-					if (values.get(i) < temp && i != 1 && i != 2) {
-						values.set(i, temp);
-
-						integrator.get(LineChart.NAMES[i]).setTreshHold(temp);
+					if (values.get(i) < temp * 1.10 && i != 1 && i != 2) {
+						values.set(i, temp * 1.10);
+						integrator.get(LineChart.NAMES[i]).setTreshHold(
+								temp * 1.10);
 					}
 				}
 				frame.updateValues(values);
 			}
 		} else
-			for (int i = 0; i < values.size(); i++) {
-				values.set(i, 0.0);
-				time = System.currentTimeMillis();
-			}
+			time = System.currentTimeMillis();
 
 	}
 }
