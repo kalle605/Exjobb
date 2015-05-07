@@ -71,7 +71,7 @@ public class SerielCom implements SerialPortEventListener {
 			chart.setVisible(true);
 
 		} catch (Exception e) {
-			System.err.println(e.toString());
+			System.err.println("Fel i SerialCom");
 		}
 	}
 

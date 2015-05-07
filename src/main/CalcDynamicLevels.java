@@ -36,6 +36,7 @@ public class CalcDynamicLevels {
 				soundth = rs.getDouble("sound");
 				lightth = rs.getDouble("light");
 			}
+			dc.close();
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -65,7 +66,7 @@ public class CalcDynamicLevels {
 		int lightValue = 2;
 		SimpleDateFormat d = new SimpleDateFormat("HH");
 		String date = d.format(new Date());
-
+		boolean hasChanged = false;
 		if (Double.parseDouble(v.get(pirValue)) == 0
 				&& Double.parseDouble(v.get(lightValue)) < 50) {
 			if (((System.currentTimeMillis() - time) / 3600000) >= 1
@@ -76,9 +77,20 @@ public class CalcDynamicLevels {
 						values.set(i, temp * 1.10);
 						integrator.get(LineChart.NAMES[i]).setTreshHold(
 								temp * 1.10);
+						hasChanged = true;
 					}
 				}
 				frame.updateValues(values);
+				if (hasChanged) {
+					try {
+						DatabaseConnector.getConnection().execute(
+								"UPDATE indelvalue SET co2=" + values.get(3)
+										+ ", sound = " + values.get(1)
+										+ "WHERE ID = 1");
+					} catch (ClassNotFoundException | SQLException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		} else
 			time = System.currentTimeMillis();
