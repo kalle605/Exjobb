@@ -96,7 +96,7 @@ public class CalcDynamicLevels {
 		} else
 			time = System.currentTimeMillis();
 
-		frame.updatePeople(v.get(v.size() - 1));
+		frame.updatePeople(Integer.parseInt(v.get(v.size() - 1)));
 
 	}
 }
