@@ -28,6 +28,7 @@ public class CalcDynamicLevels {
 		double soundth = 0.0;
 		double movementth = 1;
 		double lightth = 0.0;
+
 		try {
 			Statement dc = DatabaseConnector.getConnection();
 			ResultSet rs = dc.executeQuery("SELECT * FROM idlevalue");
@@ -37,13 +38,11 @@ public class CalcDynamicLevels {
 				lightth = rs.getDouble("light");
 			}
 			dc.close();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (SQLException e1) {
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+
 		values.add(soundth);
 		values.add(movementth);
 		values.add(lightth);
@@ -89,13 +88,15 @@ public class CalcDynamicLevels {
 								"UPDATE idlevalue SET co2=" + values.get(3)
 										+ ", sound = " + values.get(1)
 										+ "WHERE ID = 1");
-					} catch (ClassNotFoundException | SQLException e) {
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
 			}
 		} else
 			time = System.currentTimeMillis();
+
+		frame.updatePeople(v.get(v.size() - 1));
 
 	}
 }

@@ -5,8 +5,7 @@ import java.sql.*;
 public class DatabaseConnector {
 	private static Connection con;
 
-	public static Statement getConnection() throws SQLException,
-			ClassNotFoundException {
+	public static Statement getConnection() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		if (con == null)
 			con = DriverManager.getConnection(

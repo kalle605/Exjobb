@@ -60,7 +60,7 @@ public class TestAll {
 			String s = (r.nextInt(200) + 100) + ";" + 1 + ";"
 					+ 100 + ";" + (r.nextInt(200) + 100) + ";"
 					+ (r.nextInt(200) + 100) + ";" + (r.nextInt(200) + 100)
-					+ ";";
+					+ ";1;";
 			try {
 				data.addData(s);
 			} catch (ClassNotFoundException | SQLException e) {

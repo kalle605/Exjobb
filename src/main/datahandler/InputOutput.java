@@ -10,7 +10,6 @@ import main.filter.Filter;
 import main.integration.I_CO2;
 import main.integration.I_Light;
 import main.integration.I_PIR;
-import main.integration.I_Piezo;
 import main.integration.I_Sound;
 
 public class InputOutput {
@@ -21,10 +20,8 @@ public class InputOutput {
 		integrator = new HashMap<String, Filter>();
 		integrator.put("movement", new Filter(new I_PIR()));
 		integrator.put("sound", new Filter(new I_Sound()));
-		integrator.put("piezo", new Filter(new I_Piezo()));
 		integrator.put("light", new Filter(new I_Light(), 200));
 		integrator.put("carbon dioxide", new F_CO2(new I_CO2()));
-		integrator.put("piezo golv", new Filter(new I_Piezo()));
 		cdl = new CalcDynamicLevels(integrator);
 	}
 

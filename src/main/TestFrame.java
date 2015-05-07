@@ -50,6 +50,10 @@ public class TestFrame extends JFrame {
 			labels.add(temp);
 			inc += 25;
 		}
+		JLabel temp = new JLabel(0 + "");
+		temp.setBounds(130, inc, 100, 15);
+		panel.add(temp);
+		labels.add(temp);
 
 	}
 
@@ -59,5 +63,10 @@ public class TestFrame extends JFrame {
 			labels.get(i).setText(values.get(i) + "");
 
 		repaint();
+	}
+
+	public void updatePeople(String string) {
+		labels.get(4).setText(string);
+
 	}
 }
