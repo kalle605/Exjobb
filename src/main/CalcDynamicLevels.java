@@ -43,10 +43,10 @@ public class CalcDynamicLevels {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		values.set(0, soundth);
-		values.set(1, movementth);
-		values.set(2, lightth);
-		values.set(3, co2th);
+		values.add(soundth);
+		values.add(movementth);
+		values.add(lightth);
+		values.add(co2th);
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
