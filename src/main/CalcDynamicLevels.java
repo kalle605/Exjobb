@@ -26,7 +26,7 @@ public class CalcDynamicLevels {
 		double co2th = 0.0;
 		double soundth = 0.0;
 		double movementth = 1;
-		double lightth = 0.0;
+		double lightth = 200.0;
 
 		try {
 			Statement dc = DatabaseConnector.getConnection();
@@ -38,7 +38,6 @@ public class CalcDynamicLevels {
 			}
 			dc.close();
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -60,6 +59,7 @@ public class CalcDynamicLevels {
 	}
 
 	public void measure(List<String> v) {
+		frame.updatePeople(Integer.parseInt(v.get(v.size() - 1)));
 		int pirValue = 1;
 		int lightValue = 2;
 		SimpleDateFormat d = new SimpleDateFormat("HH");
@@ -94,8 +94,6 @@ public class CalcDynamicLevels {
 			}
 		} else
 			time = System.currentTimeMillis();
-
-		frame.updatePeople(Integer.parseInt(v.get(v.size() - 1)));
 
 	}
 }

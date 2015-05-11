@@ -10,14 +10,14 @@ public class F_CO2 extends Filter {
 	private double lastValue = 0;
 
 	public void input(double d) {
-		if (lastValue - d < -10) {
+		if (lastValue - d < -25) {
 			lastValue = d;
-			integrator.input(1);
-		} else if (d - lastValue < -10) {
+			integrator.input(getMax(d, th) == 1 ? 1.5 : 0.5);
+		} else if (d - lastValue < -25) {
 			lastValue = d;
-			integrator.input(0);
-		}
-		integrator.input(getMax(d, th));
+			integrator.input(getMax(d, th) == 1 ? -0.5 : -1.5);
+		} else
+			integrator.input(getMax(d, th));
 	}
 
 	protected int getMax(double d, double max) {

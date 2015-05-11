@@ -10,7 +10,7 @@ public class I_Light extends Integrator {
 	}
 
 	@Override
-	public void input(int v) {
+	public void input(double v) {
 		if (v == 1 && data.getValue() != 1)
 			LAST_CHANGE = data.setTime(System.currentTimeMillis());
 		this.data.setValue(v == 1 ? 1 : -1);

@@ -1,7 +1,7 @@
 package main.integration;
 
 public class BinaryDataholder {
-	private int value;
+	private double value;
 	private long time;
 
 	public BinaryDataholder() {
@@ -20,11 +20,11 @@ public class BinaryDataholder {
 		return time;
 	}
 
-	public int getValue() {
+	public double getValue() {
 		return value;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void setValue(double value2) {
+		this.value = value2;
 	}
 }

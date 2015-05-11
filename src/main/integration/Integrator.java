@@ -6,7 +6,7 @@ public abstract class Integrator {
 	protected final int OUTPUT_INTERVAL = 60000;
 	protected BinaryDataholder data = new BinaryDataholder();
 
-	public void input(int value) {
+	public void input(double value) {
 		if (value == 1) {
 			this.data.setValue(1);
 			LAST_CHANGE = data.setTime(System.currentTimeMillis());
