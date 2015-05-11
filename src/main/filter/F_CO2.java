@@ -15,7 +15,7 @@ public class F_CO2 extends Filter {
 			integrator.input(getMax(d, th) == 1 ? 1.5 : 0.5);
 		} else if (d - lastValue < -25) {
 			lastValue = d;
-			integrator.input(getMax(d, th) == 1 ? -0.5 : -1.5);
+			integrator.input(getMax(d, th) == 1 ? 0.0 : -1.5);
 		} else
 			integrator.input(getMax(d, th));
 	}
