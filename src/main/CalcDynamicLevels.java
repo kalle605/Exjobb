@@ -80,19 +80,20 @@ public class CalcDynamicLevels {
 					}
 				}
 				frame.updateValues(values);
-				if (hasChanged) {
-					try {
-						DatabaseConnector.getConnection().execute(
-								"UPDATE idlevalue SET co2=" + values.get(3)
-										+ ", sound = " + values.get(0)
-										+ "WHERE ID = 1");
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
+
 			}
 		} else
 			time = System.currentTimeMillis();
-
+		if (hasChanged) {
+			try {
+				DatabaseConnector.getConnection()
+						.execute(
+								"UPDATE idlevalue SET co2=" + values.get(3)
+										+ ", sound = " + values.get(0)
+										+ "WHERE ID = 1");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
