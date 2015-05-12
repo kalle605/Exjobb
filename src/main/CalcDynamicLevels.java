@@ -67,9 +67,9 @@ public class CalcDynamicLevels {
 		boolean hasChanged = false;
 		if (Double.parseDouble(v.get(pirValue)) == 0
 				&& Double.parseDouble(v.get(lightValue)) < 100) {
-			if (((System.currentTimeMillis() - time) / 3600000) >= 1
-			// if (((System.currentTimeMillis() - time) / 60000) >= 3
-					&& (Integer.parseInt(date) > 20 || Integer.parseInt(date) < 5)) {
+			// if (((System.currentTimeMillis() - time) / 3600000) >= 1
+			if (((System.currentTimeMillis() - time) / 1) >= 3
+					&& (Integer.parseInt(date) > 12 || Integer.parseInt(date) < 5)) {
 				for (int i = 0; i < values.size(); i++) {
 					Double temp = Double.parseDouble(v.get(i));
 					if (values.get(i) < temp * 1.10 && i != 1 && i != 2) {
@@ -86,11 +86,13 @@ public class CalcDynamicLevels {
 			time = System.currentTimeMillis();
 		if (hasChanged) {
 			try {
+				System.out.println("Försöker lägga in i DB");
 				DatabaseConnector.getConnection()
 						.execute(
 								"UPDATE idlevalue SET co2=" + values.get(3)
 										+ ", sound = " + values.get(0)
 										+ "WHERE ID = 1");
+				System.out.println("Lyckades!!");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
