@@ -5,8 +5,8 @@ public class I_Light extends Integrator {
 	public double output() {
 
 		System.out.println(data.getValue() + " light");
-		return data.getValue() == 1 ? Math.pow(0.3, getOutputInterval())
-				* data.getValue() / (x() + 1) : data.getValue();
+		return data.getValue() == 1 ? 0.9 * Math.pow(0.3, getOutputInterval())
+				* data.getValue() / (x() + 1) : 0.9 * data.getValue();
 	}
 
 	@Override
