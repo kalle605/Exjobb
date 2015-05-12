@@ -86,7 +86,7 @@ public class CalcDynamicLevels {
 					try {
 						DatabaseConnector.getConnection().execute(
 								"UPDATE idlevalue SET co2=" + values.get(3)
-										+ ", sound = " + values.get(1)
+										+ ", sound = " + values.get(0)
 										+ "WHERE ID = 1");
 					} catch (Exception e) {
 						e.printStackTrace();
