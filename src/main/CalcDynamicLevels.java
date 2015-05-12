@@ -66,12 +66,10 @@ public class CalcDynamicLevels {
 		String date = d.format(new Date());
 		boolean hasChanged = false;
 		if (Double.parseDouble(v.get(pirValue)) == 0
-				&& Double.parseDouble(v.get(lightValue)) < 200) {
+				&& Double.parseDouble(v.get(lightValue)) < 100) {
 			if (((System.currentTimeMillis() - time) / 3600000) >= 1
 			// if (((System.currentTimeMillis() - time) / 60000) >= 3
 					&& (Integer.parseInt(date) > 20 || Integer.parseInt(date) < 5)) {
-				// && (cInteger.parseInt(date) > 12 || Integer.parseInt(date) <
-				// 5)) {
 				for (int i = 0; i < values.size(); i++) {
 					Double temp = Double.parseDouble(v.get(i));
 					if (values.get(i) < temp * 1.10 && i != 1 && i != 2) {
