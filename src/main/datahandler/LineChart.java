@@ -38,7 +38,7 @@ public class LineChart extends ApplicationFrame {
 		plot.setRenderer(1, renderer);
 
 		plot.getRendererForDataset(plot.getDataset(1)).setSeriesPaint(0,
-				Color.pink);
+				Color.blue.brighter());
 		float dash[] = { 10.0f };
 		plot.getRendererForDataset(plot.getDataset(1)).setBaseOutlineStroke(
 				new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
