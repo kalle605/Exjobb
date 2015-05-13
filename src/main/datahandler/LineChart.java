@@ -33,16 +33,16 @@ public class LineChart extends ApplicationFrame {
 		plot.setRangeAxis(1, axis2);
 		plot.setDataset(1, dataset2);
 		plot.mapDatasetToRangeAxis(1, 1);
-		XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-
-		plot.setRenderer(1, renderer);
-
-		plot.getRendererForDataset(plot.getDataset(1)).setSeriesPaint(0,
-				Color.blue.brighter());
-		float dash[] = { 10.0f };
-		plot.getRendererForDataset(plot.getDataset(1)).setBaseOutlineStroke(
-				new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
-						BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f));
+//		XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+//
+//		plot.setRenderer(1, renderer);
+//
+//		plot.getRendererForDataset(plot.getDataset(1)).setSeriesPaint(0,
+//				Color.blue.brighter());
+//		float dash[] = { 10.0f };
+//		plot.getRendererForDataset(plot.getDataset(1)).setBaseOutlineStroke(
+//				new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
+//						BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f));
 
 		plot.setBackgroundPaint(Color.gray);
 		DateAxis axis = (DateAxis) plot.getDomainAxis();
