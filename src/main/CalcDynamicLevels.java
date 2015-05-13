@@ -11,6 +11,7 @@ import java.util.List;
 
 import main.datahandler.DatabaseConnector;
 import main.datahandler.LineChart;
+import main.filter.F_PPL;
 import main.filter.Filter;
 
 public class CalcDynamicLevels {
@@ -18,9 +19,11 @@ public class CalcDynamicLevels {
 	private TestFrame frame;
 	private ArrayList<Double> values;
 	private HashMap<String, Filter> integrator;
+	private F_PPL ppl;
 
-	public CalcDynamicLevels(HashMap<String, Filter> integrator) {
+	public CalcDynamicLevels(HashMap<String, Filter> integrator, F_PPL ppl) {
 		this.integrator = integrator;
+		this.ppl = ppl;
 		time = System.currentTimeMillis();
 		values = new ArrayList<Double>();
 		double co2th = 0.0;
@@ -59,7 +62,8 @@ public class CalcDynamicLevels {
 	}
 
 	public void measure(List<String> v) {
-		frame.updatePeople(Integer.parseInt(v.get(v.size() - 1)));
+		// frame.updatePeople(Integer.parseInt(v.get(v.size() - 1)));
+		frame.updatePeople(ppl.output());
 		int pirValue = 1;
 		int lightValue = 2;
 		SimpleDateFormat d = new SimpleDateFormat("HH");
@@ -67,8 +71,8 @@ public class CalcDynamicLevels {
 		boolean hasChanged = false;
 		if (Double.parseDouble(v.get(pirValue)) == 0
 				&& Double.parseDouble(v.get(lightValue)) < 100) {
-			 if (((System.currentTimeMillis() - time) / 3600000) >= 1
-//			if (((System.currentTimeMillis() - time) / 1) >= 3
+			if (((System.currentTimeMillis() - time) / 3600000) >= 1
+			// if (((System.currentTimeMillis() - time) / 1) >= 3
 					&& (Integer.parseInt(date) > 12 || Integer.parseInt(date) < 5)) {
 				for (int i = 0; i < values.size(); i++) {
 					Double temp = Double.parseDouble(v.get(i));
@@ -80,7 +84,6 @@ public class CalcDynamicLevels {
 					}
 				}
 				frame.updateValues(values);
-
 			}
 		} else
 			time = System.currentTimeMillis();

@@ -33,24 +33,6 @@ public class TestAll {
 
 	@Test
 	public void test() {
-
-		// for (int i = 0; i < 60; i++) {
-		// try {
-		// Thread.sleep(1000); // 1000 milliseconds is one second.
-		// } catch (InterruptedException ex) {
-		// Thread.currentThread().interrupt();
-		// }
-		// String s = (r.nextInt(200) + 50) + ";" + 0 + ";" + 0 + ";"
-		// + (r.nextInt(200) + 50) + ";" + (r.nextInt(200) + 50) + ";"
-		// + (r.nextInt(200) + 50) + ";";
-		// try {
-		// data.addData(s);
-		// } catch (ClassNotFoundException | SQLException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
-
 		while (true) {
 			try {
 				Thread.sleep(1000); // 1000 milliseconds is one second.

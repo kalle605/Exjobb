@@ -2,14 +2,15 @@ package main.datahandler;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
 
 import main.CalcDynamicLevels;
 import main.filter.F_CO2;
+import main.filter.F_PPL;
 import main.filter.Filter;
 import main.integration.I_CO2;
 import main.integration.I_Light;
 import main.integration.I_PIR;
+import main.integration.I_PPL;
 import main.integration.I_Sound;
 
 public class InputOutput {
@@ -18,26 +19,29 @@ public class InputOutput {
 
 	public InputOutput() {
 		integrator = new HashMap<String, Filter>();
-		integrator.put("movement", new Filter(new I_PIR()));
+		I_PIR pir = new I_PIR();
+		integrator.put("movement", new Filter(pir));
 		integrator.put("sound", new Filter(new I_Sound()));
 		integrator.put("light", new Filter(new I_Light(), 200));
 		integrator.put("carbon dioxide", new F_CO2(new I_CO2()));
-		cdl = new CalcDynamicLevels(integrator);
+		F_PPL ppl = new F_PPL(new I_PPL(), pir);
+		integrator.put("Detected Presence", ppl);
+		cdl = new CalcDynamicLevels(integrator, ppl);
 	}
 
 	public void input(List<String> v) {
-		cdl.measure(v);
 		for (int i = 0; i < LineChart.NAMES.length; i++)
 			if (integrator.containsKey(LineChart.NAMES[i]))
 				integrator.get(LineChart.NAMES[i]).input(
 						Double.parseDouble(v.get(i)));
-
+		cdl.measure(v);
 	}
 
 	public double getOutput() {
 		double sum = 0;
-		for (Entry<String, Filter> e : integrator.entrySet())
-			sum += e.getValue().output();
+		for (int i = 0; i < LineChart.NAMES.length - 1; i++)
+			sum += integrator.get(LineChart.NAMES[i]).output();
+		sum += integrator.get("Detected Presence").output() > 0 ? 0 : -1;
 		System.out.println("Total: " + sum);
 		return sum >= 1 ? 1 : 0;
 	}

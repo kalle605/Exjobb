@@ -1,6 +1,8 @@
 package main.datahandler;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Stroke;
 import java.text.SimpleDateFormat;
 
 import org.jfree.chart.ChartFactory;
@@ -26,6 +28,10 @@ public class LineChart extends ApplicationFrame {
 
 		XYPlot plot = (XYPlot) lineChart.getPlot();
 		final NumberAxis axis2 = new NumberAxis("Detected Presence");
+		axis2.setAxisLinePaint(Color.pink);
+		Stroke tickMarkLineStroke = new BasicStroke(1.4f,
+				BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
+		axis2.setAxisLineStroke(tickMarkLineStroke);
 		axis2.setAutoRange(false);
 		plot.setRangeAxis(1, axis2);
 		plot.setDataset(1, dataset2);
