@@ -96,6 +96,7 @@ public class SerielCom implements SerialPortEventListener {
 			String s = "";
 			try {
 				s = input.readLine();
+				System.out.println(s);
 				try {
 					data.addData(s);
 				} catch (ClassNotFoundException e) {

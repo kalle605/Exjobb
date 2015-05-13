@@ -15,7 +15,6 @@ public class TestFrame extends JFrame {
 	private static final long serialVersionUID = -802009526020433864L;
 	private JPanel contentPane;
 	private ArrayList<JLabel> labels;
-	private double nbrofppl = 0;
 
 	/**
 	 * Create the frame.
@@ -67,7 +66,6 @@ public class TestFrame extends JFrame {
 	}
 
 	public void updatePeople(double d) {
-		nbrofppl += d;
-		labels.get(4).setText(nbrofppl + "");
+		labels.get(4).setText(d + "");
 	}
 }
