@@ -7,7 +7,9 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 
 import main.datahandler.AddData;
 import main.datahandler.LineChart;
@@ -91,11 +93,14 @@ public class SerielCom implements SerialPortEventListener {
 	 */
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-			try {
-				data.addData(input.readLine());
-			} catch (Exception e) {
-				System.out.println("Zero Bytes");
-			}
+			
+				try {
+					data.addData(input.readLine());
+				} catch (ClassNotFoundException | SQLException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 		}
 		// Ignore all the other eventTypes, but you should consider the other
 		// ones.
