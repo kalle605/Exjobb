@@ -8,6 +8,7 @@ public class F_PPL extends Filter {
 
 	public F_PPL(Integrator integrator, I_PIR pir) {
 		super(integrator);
+		this.pir = pir;
 	}
 
 	@Override

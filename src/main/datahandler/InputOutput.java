@@ -20,12 +20,12 @@ public class InputOutput {
 	public InputOutput() {
 		integrator = new HashMap<String, Filter>();
 		I_PIR pir = new I_PIR();
+		F_PPL ppl = new F_PPL(new I_PPL(), pir);
 		integrator.put("movement", new Filter(pir));
 		integrator.put("sound", new Filter(new I_Sound()));
 		integrator.put("light", new Filter(new I_Light(), 200));
 		integrator.put("carbon dioxide", new F_CO2(new I_CO2()));
-		F_PPL ppl = new F_PPL(new I_PPL(), pir);
-		integrator.put("Detected Presence", ppl);
+		integrator.put("people", ppl);
 		cdl = new CalcDynamicLevels(integrator, ppl);
 	}
 
@@ -41,7 +41,8 @@ public class InputOutput {
 		double sum = 0;
 		for (int i = 0; i < LineChart.NAMES.length - 1; i++)
 			sum += integrator.get(LineChart.NAMES[i]).output();
-		sum += integrator.get("Detected Presence").output() > 0 ? 0 : -1;
+
+		sum += integrator.get("people").output() > 0 ? 0 : -1;
 		System.out.println("Total: " + sum);
 		return sum >= 1 ? 1 : 0;
 	}
