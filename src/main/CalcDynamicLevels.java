@@ -73,7 +73,7 @@ public class CalcDynamicLevels {
 				&& Double.parseDouble(v.get(lightValue)) < 100) {
 			if (((System.currentTimeMillis() - time) / 3600000) >= 1
 			// if (((System.currentTimeMillis() - time) / 1) >= 3
-					&& (Integer.parseInt(date) > 12 || Integer.parseInt(date) < 5)) {
+					&& (Integer.parseInt(date) > 20 || Integer.parseInt(date) < 5)) {
 				for (int i = 0; i < values.size(); i++) {
 					Double temp = Double.parseDouble(v.get(i));
 					if (values.get(i) < temp * 1.10 && i != 1 && i != 2) {
