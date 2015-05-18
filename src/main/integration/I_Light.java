@@ -6,7 +6,7 @@ public class I_Light extends Integrator {
 
 		System.out.println(data.getValue() == 1 ? 0.9
 				* Math.pow(0.3, getOutputInterval()) * data.getValue()
-				/ (x() + 1) : 0.9 * data.getValue() + " light");
+				/ (x() + 1) + " light" : 0.9 * data.getValue() + " light");
 		return data.getValue() == 1 ? 0.9 * Math.pow(0.3, getOutputInterval())
 				* data.getValue() / (x() + 1) : 0.9 * data.getValue();
 	}
