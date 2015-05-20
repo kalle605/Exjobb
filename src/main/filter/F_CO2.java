@@ -1,10 +1,15 @@
 package main.filter;
 
+import main.integration.I_CO2;
 import main.integration.Integrator;
 
 public class F_CO2 extends Filter {
 	public F_CO2(Integrator integrator) {
 		super(integrator);
+	}
+
+	public F_CO2(I_CO2 i_CO2, int i) {
+		super(i_CO2, i);
 	}
 
 	private boolean choose = false;

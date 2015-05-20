@@ -24,7 +24,7 @@ public class InputOutput {
 		integrator.put("movement", new Filter(pir));
 		integrator.put("sound", new Filter(new I_Sound()));
 		integrator.put("light", new Filter(new I_Light(), 200));
-		integrator.put("carbon dioxide", new F_CO2(new I_CO2()));
+		integrator.put("carbon dioxide", new F_CO2(new I_CO2(), 200));
 		integrator.put("people", ppl);
 		cdl = new CalcDynamicLevels(integrator, ppl);
 	}

@@ -33,21 +33,60 @@ public class TestAll {
 
 	@Test
 	public void test() {
-		while (true) {
+		String s1 = (r.nextInt(200) + 100) + ";" + 1 + ";" + 100 + ";" + 300
+				+ ";" + "1;";
+		String s2 = (r.nextInt(200) + 100) + ";" + 1 + ";" + 100 + ";" + 400
+				+ ";" + "1;";
+		String s5 = (r.nextInt(200) + 100) + ";" + 1 + ";" + 100 + ";" + 405
+				+ ";" + "1;";
+		String s3 = (r.nextInt(200) + 100) + ";" + 1 + ";" + 100 + ";" + 250
+				+ ";" + "1;";
+		String s4 = (r.nextInt(200) + 100) + ";" + 1 + ";" + 100 + ";" + 100
+				+ ";" + "1;";
+		String s6 = (r.nextInt(200) + 100) + ";" + 1 + ";" + 100 + ";" + 95
+				+ ";" + "1;";
+		try {
 			try {
 				Thread.sleep(1000); // 1000 milliseconds is one second.
 			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
-			String s = (r.nextInt(200) + 100) + ";" + 1 + ";" + 100 + ";"
-					+ (r.nextInt(200) + 100) + ";" + "1;";
+			data.addData(s1);
 			try {
-				data.addData(s);
-			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Thread.sleep(1000); // 1000 milliseconds is one second.
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
 			}
+			data.addData(s2);
+			try {
+				Thread.sleep(1000); // 1000 milliseconds is one second.
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
+			}
+			try {
+				Thread.sleep(1000); // 1000 milliseconds is one second.
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
+			}
+			data.addData(s5);
+			data.addData(s3);
+			try {
+				Thread.sleep(1000); // 1000 milliseconds is one second.
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
+			}
+			data.addData(s4);
+			try {
+				Thread.sleep(1000); // 1000 milliseconds is one second.
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
+			}
+			data.addData(s6);
+		} catch (ClassNotFoundException | SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+
 	}
 
 	private XYSeriesCollection createXYSeriesCollection1() {
