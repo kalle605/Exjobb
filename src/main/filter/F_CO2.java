@@ -7,21 +7,38 @@ public class F_CO2 extends Filter {
 		super(integrator);
 	}
 
+	private boolean choose = false;
 	private double lastValue = 0;
+	private double currentWeight = 0;
 
 	public void input(double d) {
-		if (lastValue - d < -25) {
+		if (lastValue == 0) {
 			lastValue = d;
-			integrator.input(getMax(d, th) == 1 ? 1.5 : 0.5);
-		} else if (d - lastValue < -25) {
-			lastValue = d;
-			integrator.input(getMax(d, th) == 1 ? 0.0 : -1.5);
-		} else
 			integrator.input(getMax(d, th));
+			currentWeight = getMax(d, th);
+		} else if (lastValue - d < -75) {
+			choose = true;
+			increasing(d);
+			lastValue = d;
+		} else if (d - lastValue < -75) {
+			choose = false;
+			decreasing(d);
+			lastValue = d;
+		} else if (choose) {
+			increasing(d);
+		} else if (choose)
+			decreasing(d);
+		else
+			integrator.input(currentWeight);
 	}
 
-	protected int getMax(double d, double max) {
-		return d >= max ? 1 : -1;
+	private void decreasing(double d) {
+		integrator.input(getMax(d, th) == 1 ? 0.0 : -1.5);
+		currentWeight = getMax(d, th) == 1 ? 0.0 : -1.5;
 	}
 
+	private void increasing(double d) {
+		integrator.input(getMax(d, th) == 1 ? 1.5 : 0.5);
+		currentWeight = getMax(d, th) == 1 ? 1.5 : 0.5;
+	}
 }
