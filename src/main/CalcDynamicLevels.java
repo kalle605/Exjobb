@@ -44,10 +44,10 @@ public class CalcDynamicLevels {
 			e1.printStackTrace();
 		}
 
-		values.add(soundth);
+		values.add(soundth * 1.1);
 		values.add(movementth);
 		values.add(lightth);
-		values.add(co2th);
+		values.add(co2th * 1.1);
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
