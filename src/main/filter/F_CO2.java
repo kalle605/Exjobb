@@ -16,17 +16,17 @@ public class F_CO2 extends Filter {
 			lastValue = d;
 			integrator.input(getMax(d, th));
 			currentWeight = getMax(d, th);
-		} else if (lastValue - d < -75) {
+		} else if (lastValue - d < -25) {
 			choose = true;
 			increasing(d);
 			lastValue = d;
-		} else if (d - lastValue < -75) {
+		} else if (d - lastValue < -25) {
 			choose = false;
 			decreasing(d);
 			lastValue = d;
 		} else if (choose) {
 			increasing(d);
-		} else if (choose)
+		} else if (!choose)
 			decreasing(d);
 		else
 			integrator.input(currentWeight);
@@ -40,5 +40,9 @@ public class F_CO2 extends Filter {
 	private void increasing(double d) {
 		integrator.input(getMax(d, th) == 1 ? 1.5 : 0.5);
 		currentWeight = getMax(d, th) == 1 ? 1.5 : 0.5;
+	}
+
+	protected int getMax(double d, double max) {
+		return d >= max ? 1 : -1;
 	}
 }
