@@ -38,13 +38,13 @@ public class F_CO2 extends Filter {
 	}
 
 	private void decreasing(double d) {
-		integrator.input(getMax(d, th) == 1 ? 0.5 : -1.5);
-		currentWeight = getMax(d, th) == 1 ? 0.5 : -1.5;
+		integrator.input(getMax(d, th) == 1 ? 0.5 : -1);
+		currentWeight = getMax(d, th) == 1 ? 0.5 : -1;
 	}
 
 	private void increasing(double d) {
-		integrator.input(getMax(d, th) == 1 ? 1.5 : 0.5);
-		currentWeight = getMax(d, th) == 1 ? 1.5 : 0.5;
+		integrator.input(getMax(d, th) == 1 ? 2 : 0.5);
+		currentWeight = getMax(d, th) == 1 ? 2 : 0.5;
 	}
 
 	protected int getMax(double d, double max) {
