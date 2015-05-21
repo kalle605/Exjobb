@@ -42,7 +42,7 @@ public class InputOutput {
 		for (int i = 0; i < LineChart.NAMES.length - 2; i++)
 			sum += integrator.get(LineChart.NAMES[i]).output();
 
-		sum += integrator.get("people").output() > 0 ? 0 : -1;
+		sum += integrator.get("people").output() > 0 ? 0 : -0.9;
 		System.out.println("Total: " + sum);
 		return sum >= 1 ? 1 : 0;
 	}

@@ -6,7 +6,7 @@ public class I_PPL extends Integrator {
 	public double output() {
 		if (getOutputInterval() > 5 && data.getValue() > 0)
 			data.setValue(data.getValue() - 1);
-		return 0.9 * data.getValue();
+		return data.getValue();
 	}
 
 	@Override
