@@ -69,7 +69,7 @@ public class CalcDynamicLevels {
 		int lightValue = 2;
 		SimpleDateFormat d = new SimpleDateFormat("HH");
 		String date = d.format(new Date());
-		boolean hasChanged = false;
+//		boolean hasChanged = false;
 		if (Double.parseDouble(v.get(pirValue)) == 0
 				&& Double.parseDouble(v.get(lightValue)) < 100) {
 			if (((System.currentTimeMillis() - time) / 3600000) >= 1
@@ -81,25 +81,25 @@ public class CalcDynamicLevels {
 						values.set(i, temp * 1.10);
 						integrator.get(LineChart.NAMES[i]).setTreshHold(
 								temp * 1.10);
-						hasChanged = true;
+//						hasChanged = true;
 					}
 				}
 				frame.updateValues(values);
 			}
 		} else
 			time = System.currentTimeMillis();
-		if (hasChanged) {
-			try {
-				System.out.println("Försöker lägga in i DB");
-				DatabaseConnector.getConnection()
-						.execute(
-								"UPDATE idlevalue SET co2=" + values.get(3)
-										+ ", sound = " + values.get(0)
-										+ "WHERE ID = 1");
-				System.out.println("Lyckades!!");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+//		if (hasChanged) {
+//			try {
+//				System.out.println("Försöker lägga in i DB");
+//				DatabaseConnector.getConnection()
+//						.execute(
+//								"UPDATE idlevalue SET co2=" + values.get(3)
+//										+ ", sound = " + values.get(0)
+//										+ "WHERE ID = 1");
+//				System.out.println("Lyckades!!");
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 	}
 }
