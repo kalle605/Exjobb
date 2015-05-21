@@ -43,7 +43,8 @@ public class CalcDynamicLevels {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-
+		integrator.get("sound").setTreshHold(soundth * 1.1);
+		integrator.get("carbon dioxide").setTreshHold(co2th * 1.1);
 		values.add(soundth * 1.1);
 		values.add(movementth);
 		values.add(lightth);
